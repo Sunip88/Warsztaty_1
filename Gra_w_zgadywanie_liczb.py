@@ -1,5 +1,8 @@
 from random import randint
-
+'''
+Simple guessing game. Default range is 1-100 but it takes max range argument (only integer). Returns tips about where your
+guesses are located compared, to secret number. It also counts tries.
+'''
 
 def guess_game(guess_range=100):
     i = 0
