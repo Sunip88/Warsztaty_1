@@ -1,5 +1,15 @@
 import random
 
+"""
+Lotto:
+arguments - 
+    random_num = False(default)/True - if numbers are chosen randomly (True) or manually (False)
+    r_num = integer > 0, 1(default) - number of games played at once
+    Function prints results of lotto game where numbers are being chosen randomly or manually.
+    User can choose numbers form 1 to 49, in one game there are 6 unrepeatable numbers being selected.
+    If argument "r_num" is greater than 1, game will print statistics about your guesses.
+"""
+
 
 def lotto(random_num=False, r_num=1):
     lotto_num = random.sample(range(1, 50), 6)
@@ -53,8 +63,8 @@ def lotto(random_num=False, r_num=1):
                 print("Play again")
         return won
 
-
     if r_num == 1:
+        print("Choose number from 1 to 49.")
         normal_game(won)
     else:
         winner_list = []
@@ -64,6 +74,7 @@ def lotto(random_num=False, r_num=1):
         win6 = 0
         for i in range(r_num):
             if not random_num:
+                print("Choose number from 1 to 49.")
                 print(f"{i + 1} game")
             winner_list.append(normal_game(won))
         for i in winner_list:
@@ -79,4 +90,8 @@ def lotto(random_num=False, r_num=1):
         print(f"You win {sum_win} games in {r_num} tries:\n\n{win3} times you matched 3 numbers \n{win4}"
               f" times you matched 4 numbers \n{win5} times you matched 5 numbers \n{win6} times you matched 6 numbers ")
 
-lotto(False, 5)
+
+lotto(True, 1000)
+# lotto(False, 2)
+# lotto(True, 1)
+# lotto()
