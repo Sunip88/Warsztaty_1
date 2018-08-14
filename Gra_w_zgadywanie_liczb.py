@@ -3,12 +3,12 @@ from random import randint
 
 def guess_game(guess_range=100):
     i = 0
-    secret_num = randint(1, guess_range)
+    secret_num = randint(1, guess_range + 1)
 
     def validator(guess):
         if guess.isdigit():
             guess = int(guess)
-            if 0 < guess < guess_range:
+            if 0 < guess < guess_range + 1:
                 return 1
             else:
                 return 2
@@ -16,13 +16,13 @@ def guess_game(guess_range=100):
             return 3
 
     while True:
-        guess = input("Zgadnij liczbę: ")
+        guess = input(f"Zgadnij liczbę z zakresu 1 - {guess_range}: ")
         guess_v = validator(guess)
         while guess_v > 1:
             if guess_v == 3:
                 print("To nie jest liczba")
             elif guess_v == 2:
-                print(f"Liczba poza zasięgiem (1 - {guess_range})")
+                print(f"Liczba poza zakresem (1 - {guess_range})")
             guess = input("Zgadnij liczbę: ")
             guess_v = validator(guess)
         guess = int(guess)
