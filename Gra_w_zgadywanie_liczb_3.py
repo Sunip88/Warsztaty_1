@@ -7,11 +7,10 @@ Lib: Flask
 app = Flask(__name__)
 
 
-def guessing_2(check, min_num=0, max_num=1000):
-    check = int(check)
+def guessing_2(check, min_num=0, max_num=1001):
     guess = int((max_num - min_num) / 2) + min_num
     if check == 3:
-        return guess # wygrana
+        return guess  # wygrana
     elif check == 1:
         max_num = guess
         guess = int((max_num - min_num) / 2) + min_num
@@ -21,7 +20,7 @@ def guessing_2(check, min_num=0, max_num=1000):
         guess = int((max_num - min_num) / 2) + min_num
         return [guess, min_num, max_num]
     else:
-        return [guess, min_num, max_num] # start
+        return [guess, min_num, max_num]  # start
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -42,20 +41,19 @@ def form():
             <h1>Thank you for playing. Your number was {{guess_n}}<h1>
             '''
     if request.method == 'GET':
-        return render_template_string(new_form, guess_n=guessing_2(4)[0], max_n=guessing_2(4)[2], min_n=guessing_2(4)[1])
+        guess_list = guessing_2(4)
+        return render_template_string(new_form, guess_n=guess_list[0], max_n=guess_list[2], min_n=guess_list[1])
     if request.method == 'POST':
         if request.values.get('more'):
-            return render_template_string(new_form,
-                            guess_n=guessing_2(2, int(request.values.get('min_num')), int(request.values.get('max_num')))[0],
-                            max_n=guessing_2(2, int(request.values.get('min_num')), int(request.values.get('max_num')))[2],
-                            min_n=guessing_2(2, int(request.values.get('min_num')), int(request.values.get('max_num')))[1])
+            guess_list = guessing_2(2, int(request.values.get('min_num')), int(request.values.get('max_num')))
+            print(request.values.get('guess_n'))
+            return render_template_string(new_form, guess_n=guess_list[0], max_n=guess_list[2], min_n=guess_list[1])
         elif request.values.get('less'):
-            return render_template_string(new_form,
-                            guess_n=guessing_2(1, int(request.values.get('min_num')), int(request.values.get('max_num')))[0],
-                            max_n=guessing_2(1, int(request.values.get('min_num')), int(request.values.get('max_num')))[2],
-                            min_n=guessing_2(1, int(request.values.get('min_num')), int(request.values.get('max_num')))[1])
+            guess_list = guessing_2(1, int(request.values.get('min_num')), int(request.values.get('max_num')))
+            return render_template_string(new_form, guess_n=guess_list[0], max_n=guess_list[2], min_n=guess_list[1])
         elif request.values.get('won'):
-            return render_template_string(won_form, guess_n=guessing_2(3, int(request.values.get('min_num')), int(request.values.get('max_num'))))
+            return render_template_string(won_form, guess_n=guessing_2(3, int(request.values.get('min_num')),
+                                                                       int(request.values.get('max_num'))))
 
 
 if __name__ == '__main__':
