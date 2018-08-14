@@ -46,7 +46,6 @@ def form():
     if request.method == 'POST':
         if request.values.get('more'):
             guess_list = guessing_2(2, int(request.values.get('min_num')), int(request.values.get('max_num')))
-            print(request.values.get('guess_n'))
             return render_template_string(new_form, guess_n=guess_list[0], max_n=guess_list[2], min_n=guess_list[1])
         elif request.values.get('less'):
             guess_list = guessing_2(1, int(request.values.get('min_num')), int(request.values.get('max_num')))
