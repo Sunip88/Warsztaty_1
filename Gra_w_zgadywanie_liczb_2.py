@@ -1,4 +1,9 @@
 def guessing_2():
+    """
+    Another guessing game. Default range is 1-1000. User should enter '1', '2' or '3' depending on guessing number.
+    It also counts tries.
+    """
+
     input("Pomyśl liczbę od 0 do 1000, a ja ją zgadnę w max. 10 próbach.\nJak będziesz gotowy wciśnij enter.")
     # print("Pomyśl liczbę od 0 do 1000, a ja ją zgadnę w max. 10 próbach")
     min_num = 0
@@ -28,4 +33,6 @@ def guessing_2():
         else:
             print("Taka odpowiedź nie istnieję.")
             break
+
+
 guessing_2()

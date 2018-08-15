@@ -1,6 +1,14 @@
 import re
 from random import randint
 
+"""
+Application returns 'False' or result of Dice equation (xDy+z as string np.: '2D10+10' or 'D12-1' where:
+        x - is number of Dice, 
+        y - is Dice type np. D6, D10, 
+        z - is value that application should add or remove).
+    'False' is returned when argument 'dice_code' differs from equation.
+"""
+
 
 def Dice(dice_code):
     if type(dice_code) == str:
@@ -31,7 +39,7 @@ def Dice(dice_code):
                     sum_dice += dice_mode
                 elif dice_mode_sign == '-':
                     sum_dice -= dice_mode
-            return sum_dice, dice_raw.group(0)
+            return sum_dice
         else:
             return False
     else:
@@ -39,13 +47,13 @@ def Dice(dice_code):
 
 print(Dice('19D100+1000'))
 print(Dice("2D10+10"))
-print(Dice("lambada"))
-print(Dice(185))
 print(Dice("D6"))
 print(Dice("2D3"))
 print(Dice("D12-100"))
 print(Dice("019D100+1000"))
 print(Dice("15D200+1000"))
 print(Dice("15D100+0100"))
+print(Dice("lambada"))
+print(Dice(185))
 
 print(Dice("2D6-3"))
