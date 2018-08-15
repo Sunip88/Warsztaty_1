@@ -48,3 +48,4 @@ print(Dice("019D100+1000"))
 print(Dice("15D200+1000"))
 print(Dice("15D100+0100"))
 
+print(Dice("2D6-3"))
