@@ -91,7 +91,7 @@ def lotto(random_num=False, r_num=1):
               f" times you matched 4 numbers \n{win5} times you matched 5 numbers \n{win6} times you matched 6 numbers ")
 
 
-lotto(True, 1000)
+lotto(True, 10000)
 # lotto(False, 2)
 # lotto(True, 1)
 # lotto()

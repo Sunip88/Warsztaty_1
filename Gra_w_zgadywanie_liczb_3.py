@@ -2,6 +2,7 @@ from flask import Flask, request, render_template_string
 
 """
 Lib: Flask
+Guessing game in flask. User should choose button 'More', 'Less', 'You won' depending on guessing number.
 """
 
 app = Flask(__name__)
