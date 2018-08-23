@@ -12,7 +12,7 @@ Application returns 'False' or result of Dice equation (xDy+z as string np.: '2D
 
 def Dice(dice_code):
     if type(dice_code) == str:
-        if re.match('^([1-9][0-9]*)?[D]([1][0][0]|[2][0]|[1][2]|[1][0]|[3468])[+-]?([1-9][0-9]*)?$', dice_code):
+        if re.match(r'^([1-9][0-9]*)?[D](100|20|12|10|[3468])[+-]?([1-9][0-9]*)?$', dice_code):
             num_dices_raw = re.search('^([1-9][0-9]{0,6})?[D]', dice_code) # wszystko do D
             num_dices = num_dices_raw.group(0).replace('D', '')
             dice_raw = re.search('[D]([1][0][0]|[2][0]|[1][2]|[1][0]|[3468])', dice_code)  # kostka
